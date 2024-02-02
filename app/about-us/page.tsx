@@ -1,11 +1,11 @@
-import Avatar from "./components/avatar";
+import Navigation from "../../components/navigation";
 
 const AboutUs = () => {
-    return ( 
-        <h1>
-            About us!
-            <Avatar/>
-        </h1>
+    return(
+        <div>
+            <Navigation />
+            <h1>About us!</h1>
+        </div>
     );
 }
 
