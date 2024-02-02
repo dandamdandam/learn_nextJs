@@ -60,7 +60,24 @@
 ### 2.4 관련 개념
 
 - hydration
+- CSR/SSR
 
 ### 2.4 실습 순서
 
 1. javascript를 disable 시켰을 때의 링크 이동(hard navigator)과 활성화 시켰을 때 비교 -> 개발자도구 이용
+
+## 2.5 'use client'
+
+- 'use client'란?
+  - hydration이 진행될 component를 지정해주는 커맨드.
+  - client component를 적게 쓰면유저가 다운받아야 할 javascript 소스가 적어진다.
+
+### 2.5 관련 개념
+
+- client component
+
+## sksk
+
+### sksk 관련 개념
+
+### sksk 실습 순서
