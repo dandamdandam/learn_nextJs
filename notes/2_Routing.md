@@ -33,3 +33,20 @@
 3. root에 component 폴더 생성 후 navigation 함수 만들기. `<Link>` 사용
 4. 모든 page에 navigation component 추가
 5. "next/navigation"의 usePathname 훅 이용, 현재 경로에 따라 navigation 링크 옆에 🔥 붙이기 - use client
+
+## 2.3 SSR vs CSR
+
+- next.js가 앱을 랜더링 하는 법
+  - 랜더링: js를 브라우저가 이해할 수 있는 html로 변환하는 작업
+  - 일반적인 react는 client side rendering 사용. (브라우저에서 랜더링)
+    - ui를 보려면 javascript가 실행될 때까지 기대려야 함
+    - SEO 상 좋지 않음.
+  - next는 default로 server side rendering 사용. (서버에서 랜더링)
+
+### 2.3 관련 개념
+
+- client/server component
+
+### 2.3 실습 순서
+
+1. "use client"인 상태에서 console.log()와 아닌 상태에서 console.log() 비교 -> SSR/CSR 비교 위함. 삭제하기.
