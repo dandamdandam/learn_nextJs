@@ -50,3 +50,17 @@
 ### 2.3 실습 순서
 
 1. "use client"인 상태에서 console.log()와 아닌 상태에서 console.log() 비교 -> SSR/CSR 비교 위함. 삭제하기.
+
+## 2.4 Hydration
+
+- hydration: 사용자가 html를 본 후 react가 활성화하는 작업
+  - 사용자 접속 -> html 제공 -> init(html){react application을 html에 씌움}
+  - 씌움의 대상이 되는 것 ex) 링크, state가 들어간 부분...
+
+### 2.4 관련 개념
+
+- hydration
+
+### 2.4 실습 순서
+
+1. javascript를 disable 시켰을 때의 링크 이동(hard navigator)과 활성화 시켰을 때 비교 -> 개발자도구 이용
