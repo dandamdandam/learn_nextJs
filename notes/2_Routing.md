@@ -91,6 +91,27 @@
 2. page파일에 있던 네비게이션 바 컴포넌트를 삭제하고, 네비게이션 바 레이아웃에 추가
 3. about-us에 layout 추가, company/jobs/sales/pages.tsx 추가.
 
+## 2.8 Metadata
+
+- route groups
+  - 괄호로 이름을 묶은 폴더 ex) `(home)`
+  - 아무 영향을 미치지 못한다. 파일구조 상 좀 더 깔끔해보일 뿐
+- metadata
+  - 서버 컴포넌트인 페이지, 레이아웃 파일에 넣을 수 있고, 병합됨
+
+### 2.8 관련 개념
+
+- metadata object
+  - templete
+- route groups
+
+### 2.8 실습 순서
+
+1. 루트에 route groups (home)을 만들고 page.tsx 넣기
+2. 루트 페이지에 title 메타데이터, 루트 레이아웃에 description 메타데이터 넣고 확인.
+3. about-us 페이지에 title 메타데이터를 넣고 확인.
+4. layout에 title templete을 만들고 home과 about-us에서 | Next Moives 지워주기
+
 ## sksk
 
 ### sksk 관련 개념

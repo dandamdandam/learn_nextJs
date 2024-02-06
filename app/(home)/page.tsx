@@ -1,3 +1,8 @@
+
+export const metadata = {
+    title: 'Home'
+}
+
 const Main = () => {
     return(
         <div>
