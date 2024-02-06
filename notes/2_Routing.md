@@ -25,6 +25,7 @@
 
 - special file -> not-found
 - client/server component
+- 조건부 렌더링
 
 ### 2.2 실습 순서
 
@@ -130,9 +131,3 @@
 3. 웹 url에 쿼리를 입력하고 콘솔 출력물 확인
 4. 2, 3 삭제 후 props의 params만 가지고 오게 코드 입력
 5. movie {id}로 내용 수정
-
-## sksk
-
-### sksk 관련 개념
-
-### sksk 실습 순서
