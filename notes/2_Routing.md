@@ -112,6 +112,25 @@
 3. about-us 페이지에 title 메타데이터를 넣고 확인.
 4. layout에 title templete을 만들고 home과 about-us에서 | Next Moives 지워주기
 
+## 2.9 Dynamic Routes
+
+- Dynamic Routes
+  - path parameter, query(search) parameter를 쓴 url
+  - path parameter: []로 묶은 폴더로 만들 수 있고, 컴포넌트의 props로 받을 수 있음
+  - query parameter: 컴포넌트의 props로 받을 수 있음
+
+### 2.9 관련 개념
+
+- Dynamic Routes
+
+### 2.9 실습 순서
+
+1. root에 `(movies)/movies/[id]/page.tsx` 생성 및 내용 작성
+2. 위 파일의 파라미터를 props라고 정의한 후 콘솔에 출력 및 확인
+3. 웹 url에 쿼리를 입력하고 콘솔 출력물 확인
+4. 2, 3 삭제 후 props의 params만 가지고 오게 코드 입력
+5. movie {id}로 내용 수정
+
 ## sksk
 
 ### sksk 관련 개념
