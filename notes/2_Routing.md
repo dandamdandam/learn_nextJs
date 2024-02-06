@@ -76,6 +76,21 @@
 
 - client component
 
+## 2.7 Layouts
+
+- 상위 폴더의 layout을 먼저 랜더링 한 후 링크를 확인하고 layout안에 경로에 해당하는 컴포넌트를 렌더링 해줌
+- layout은 중첩이 가능함
+
+### 2.7 관련 개념
+
+- layout파일
+
+### 2.7 실습 순서
+
+1. 레이아웃 파일 테스트
+2. page파일에 있던 네비게이션 바 컴포넌트를 삭제하고, 네비게이션 바 레이아웃에 추가
+3. about-us에 layout 추가, company/jobs/sales/pages.tsx 추가.
+
 ## sksk
 
 ### sksk 관련 개념
