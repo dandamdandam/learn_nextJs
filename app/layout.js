@@ -1,7 +1,6 @@
-import { Metadata } from "next"
 import Navigation from "../components/navigation"
 
-export const metadata :Metadata = {
+export const metadata = {
   title: {
     template: "%s | Next Movies",
     default: "Next Movies",
@@ -9,11 +8,7 @@ export const metadata :Metadata = {
   description: 'The best movies on the best framework',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
