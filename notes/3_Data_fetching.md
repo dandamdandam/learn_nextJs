@@ -89,6 +89,19 @@
 4. 다시 [id]의 페이지 파일로 돌아와 MovieInfo와 MovieVideos를 각각 Suspense 컴포넌트로 감싸 적어주기
 5. 테스트
 
+## 2.7 Error Handling
+
+- date fetching 중 에러가 발생했을 때 처리하는 방법
+
+### 2.7 관련 개념
+
+- error file
+
+### 2.7 실습 순서
+
+1. component의 movies-videos에 에러 발생하는 코드 추가하고 확인
+2. [id] 폴더에 error 파일 추가 및 내용 작성
+
 ## sksk
 
 ### sksk 관련 개념
