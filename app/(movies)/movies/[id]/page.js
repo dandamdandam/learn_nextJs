@@ -6,8 +6,14 @@ const getMovie = async (id) => {
     return response.json();
 }
 
+const getVideos = async (id) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const response = await fetch(`${API_URL}/${id}/videos`);
+    return response.json();
+}
+
 const MovieDetail = async ({ params: { id } }) => {
-    const movie = await getMovie(id);
+    const [movie, videos] = await Promise.all([getMovie(id), getVideos(id)]);
     return( 
         <h1>{movie.title}</h1>
     );
