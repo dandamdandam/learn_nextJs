@@ -54,6 +54,24 @@
 1. (home) page 파일의 `getMovies`함수에 10초 기다리는 작업 추가(로딩 테스트 위함)
 2. (home)에 loading 파일 추가 후 내용 작성
 
+## 2.4 parallel requests
+
+- 2.3 복습
+- 한 파일에서 여러 api를 각기 다른 함수로 호출해 데이터를 패칭할 경우, 순차적으로 실행되어 서버 로딩 시간이 길어짐
+  - 병렬처리로 해결할 수 있음 -> Promise.all
+
+### 2.4 관련 개념
+
+- data fetching
+- parallel requests
+
+### 2.4 실습 순서
+
+1. (movies)/movies/[id]의 page 파일에 data fetching을 하는 `getMovie` 동기 함수 작성 및 사용.
+2. 위 폴더에 loading 파일 추가
+3. 다시 page 파일에서 `getVideos` 동기 함수 추가.
+4. 그냥 순차실행과 Promise.all을 한 병렬실행의 차이 보여주기
+
 ## sksk
 
 ### sksk 관련 개념
