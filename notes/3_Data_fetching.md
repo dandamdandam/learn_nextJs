@@ -39,6 +39,21 @@
 3. page에 해당하는 컴포넌트를 동기 함수로 바꾸어주기 (async 추가)
 4. getMovies를 컴포넌트 내부에서 실행
 
+## 2.3 Loading Component
+
+- Loading component 추가로 로딩 시 웹페이지에 보이는 UI 만들기
+- data fetching을 server side에서 하는 것: 브라우저 입장에서는 페이지가 아직 덜 로딩된 것처럼 보인다.
+  - network를 보면 로딩 페이지는 preview로, 완성된 페이지는 response로 주어진다.
+
+### 2.3 관련 개념
+
+- Loading 파일
+
+### 2.3 실습 순서
+
+1. (home) page 파일의 `getMovies`함수에 10초 기다리는 작업 추가(로딩 테스트 위함)
+2. (home)에 loading 파일 추가 후 내용 작성
+
 ## sksk
 
 ### sksk 관련 개념
