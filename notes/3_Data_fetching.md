@@ -72,6 +72,23 @@
 3. 다시 page 파일에서 `getVideos` 동기 함수 추가.
 4. 그냥 순차실행과 Promise.all을 한 병렬실행의 차이 보여주기
 
+## 2.5 Suspense
+
+- 병렬처리로 data fetching을 하는 동시에 여러 개 중 하나의 데이터 패칭이 먼저 끝난 경우 받아오는 법 -> Suspense
+- Suspense: 동기 컴포넌트가 랜더링 될 때까지 기다려주다가 랜더링 된 후 내용을 보여줌(랜더링 중에는 fallback에 입력된 JSX를 보여줌)
+
+### 2.5 관련 개념
+
+- Suspense (react 라이브러리)
+
+### 2.5 실습 순서
+
+1. (movies)/movies/[id]의 페이지 파일에서 getMovie와 getVideos 함수와 관련된 임포트, 변수 삭제
+2. component에 movie-info와 movie-videos 파일을 만들과 각각 getMovie, getVideos를 작성.
+3. 각 함수를 사용하는 동기 컴포넌트 MovieInfo와 MovieVideos를 각각 만들어주고 export.
+4. 다시 [id]의 페이지 파일로 돌아와 MovieInfo와 MovieVideos를 각각 Suspense 컴포넌트로 감싸 적어주기
+5. 테스트
+
 ## sksk
 
 ### sksk 관련 개념
