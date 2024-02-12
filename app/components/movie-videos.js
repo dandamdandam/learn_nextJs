@@ -1,10 +1,9 @@
-import { API_URL } from "../app/(home)/page";
+import { API_URL } from "../(home)/page";
 
 const getVideos = async (id) => {
     await new Promise((resolve) => setTimeout(resolve, 3000));
-    throw new Error("something broke...");
-    // const response = await fetch(`${API_URL}/${id}/videos`);
-    // return response.json();
+    const response = await fetch(`${API_URL}/${id}/videos`);
+    return response.json();
 }
 
 const MovieVideos = async ({id}) => {

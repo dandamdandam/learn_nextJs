@@ -101,9 +101,3 @@
 
 1. component의 movies-videos에 에러 발생하는 코드 추가하고 확인
 2. [id] 폴더에 error 파일 추가 및 내용 작성
-
-## sksk
-
-### sksk 관련 개념
-
-### sksk 실습 순서
