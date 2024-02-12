@@ -33,6 +33,20 @@
 3. component/movie를 클릭하면 링크가 넘어가도록 설정(onClick, useRouter)
 4. navigation, movie component와 home css 작성
 
+## 4.3 Movie Trailers
+
+- movie detail page styling
+
+### 4.3 관련 개념
+
+- iframe
+- youtube player API
+
+### 4.3 실습 순서
+
+1. component/movie-info 및 스타일 작성
+2. component/movie-videos 및 스타일 작성
+
 ## sksk
 
 ### sksk 관련 개념
