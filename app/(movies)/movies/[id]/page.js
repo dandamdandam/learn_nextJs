@@ -2,6 +2,14 @@ import { Suspense } from "react";
 
 import MovieInfo from "../../../components/movie-info";
 import MovieVideos from "../../../components/movie-videos";
+import { getMovie } from "../../../components/movie-info";
+
+export const generateMetadata = async ({ params: { id }}) => {
+    const movie = await getMovie(id);
+    return {
+        title: movie.title,
+    };
+}
 
 const MovieDetail = async ({ params: { id } }) => {
     return( 

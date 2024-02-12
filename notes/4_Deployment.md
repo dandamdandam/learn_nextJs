@@ -47,6 +47,16 @@
 1. component/movie-info 및 스타일 작성
 2. component/movie-videos 및 스타일 작성
 
+## 4.4 Dynamic Metadata
+
+- 추가 챌린지: movie api의 credit, similar, providers도 써보기
+- movie id page의 메타데이터 바꾸기
+- 요청이 캐싱되기 떄문에 여러번 api를 불러도 부하 x
+
+### 4.4 실습 순서
+
+1. (movies)/movies/[id]의 페이지에 generateMetadata 추가
+
 ## sksk
 
 ### sksk 관련 개념
