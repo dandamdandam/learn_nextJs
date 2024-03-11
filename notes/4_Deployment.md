@@ -57,7 +57,7 @@
 
 1. (movies)/movies/[id]의 페이지에 generateMetadata 추가
 
-## 3.5 Deployment
+## 4.5 Deployment
 
 - package json에 build와 start 추가
 - github에 올리기
