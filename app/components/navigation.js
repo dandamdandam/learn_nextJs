@@ -9,8 +9,8 @@ const Navigation = () => {
     return(
         <nav className={styles.nav}>
             <ul>
-                <li><Link href="/">Home</Link>{path === "/" ? "🔥" : ""}</li>
-                <li><Link href="/about-us">About us</Link>{path === "/about-us" ? "🔥" : ""}</li>
+                <li><Link prefetch href="/">Home</Link>{path === "/" ? "🔥" : ""}</li>
+                <li><Link prefetch href="/about-us">About us</Link>{path === "/about-us" ? "🔥" : ""}</li>
             </ul>
         </nav>
     );

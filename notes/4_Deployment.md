@@ -61,3 +61,5 @@
 
 - package json에 build와 start 추가
 - github에 올리기
+- vercel로 배포
+- Link에 prefetch 추가
