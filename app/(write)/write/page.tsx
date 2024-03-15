@@ -1,14 +1,24 @@
 'use client'
 
-import { FormEvent } from "react";
+import { FormEvent, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import Header from "../../components/header";
 import { backURL } from "../../globalVariable";
 import style from "../../styles/write.module.css";
 
-// https://velog.io/@sbinha/next.js-Link%EB%A1%9C-props-%EC%A0%84%EB%8B%AC%ED%95%98%EA%B8%B0
-const WritePage = () => {
+// https://github.com/vercel/next.js/discussions/61654
+const WritePage: React.FC = () => {
+    return (
+      <div>
+        <Suspense fallback={<div>Loading...</div>}>
+          <WriteComp />
+        </Suspense>
+      </div>
+    );
+}
+
+const WriteComp = () => {
     const router = useRouter();
     const params = useSearchParams();
 
