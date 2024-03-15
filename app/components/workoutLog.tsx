@@ -1,8 +1,10 @@
 'use client'
 
 import Link from "next/link";
-import { WorkoutLog, backURL } from "../globalVariable";
 import { useRouter } from "next/navigation";
+
+import { WorkoutLog, backURL } from "../globalVariable";
+import style from "../styles/workoutLog.module.css";
 
 const WorkoutLogComp = ({ id, exerciseName, content, date, duration } : WorkoutLog) => {
     const router = useRouter();
@@ -13,16 +15,18 @@ const WorkoutLogComp = ({ id, exerciseName, content, date, duration } : WorkoutL
     }
 
     return (
-        <div>
-            <div>
+        <div className={style.workoutLog}>
+            <div className={style.card}>
                 <div>
-                    <h2>{exerciseName}</h2>
-                    <span>{duration}</span>
+                    <div className={style.cardName}>
+                        <h2>{exerciseName}</h2>
+                        <span className="colored_span">{duration}</span>
+                    </div>
+                    <p>{content}</p>
                 </div>
-                <p>{content}</p>
-                <div>{getDateString(date)}</div>
+                <span className="colored_span">{getDateString(date)}</span>
             </div>
-            <div>
+            <div className={style.buttons}>
                 <Link href={`/write?id=${id}&exerciseName=${exerciseName}&content=${content}&duration=${duration}`}>
                     <img
                         alt="go to write workout log buttom styling"

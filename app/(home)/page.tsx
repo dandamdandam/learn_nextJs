@@ -1,6 +1,7 @@
 import Header from "../components/header";
 import WorkoutComp from "../components/workoutLog";
 import { WorkoutLog, backURL } from "../globalVariable";
+import style from "../styles/home.module.css";
 
 const getWorkoutLogs = async (): Promise<WorkoutLog[]> => {
     const res = await (await fetch(backURL + "/api/workoutLog", {cache: 'no-store'})).json();
@@ -13,7 +14,7 @@ const MainPage = async () => {
     return(
         <div>
             <Header />
-            <div>
+            <div className={style.workoutLogs}>
                 {
                     workoutLogs.map(workoutLog => 
                         <WorkoutComp

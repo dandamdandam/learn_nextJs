@@ -1,0 +1,35 @@
+.workoutLog{
+    background-color: var(--side-c);
+    padding: 15px 20px;
+    border-radius: 15px;
+    height: 140px;
+
+    display: grid;
+    grid-template-columns: calc(100% - 45px) 45px;
+}
+
+.card{
+    padding-right: 15px;
+    border-right: dashed 5px var(--back-c);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.cardName{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cardName h2{
+    font-size: 25px;
+    height: 38px;
+    overflow: hidden;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3px 0px;
+    padding-left: 15px;
+}
