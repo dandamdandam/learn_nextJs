@@ -1,9 +1,17 @@
 'use client'
 
 import Link from "next/link";
-import { WorkoutLog } from "../globalVariable";
+import { WorkoutLog, backURL } from "../globalVariable";
+import { useRouter } from "next/navigation";
 
 const WorkoutLogComp = ({ id, exerciseName, content, date, duration } : WorkoutLog) => {
+    const router = useRouter();
+
+    const handleDelete = () => {
+        fetch(backURL + `/api/workoutLog/${id}`, {method: 'DELETE'});
+        router.refresh();
+    }
+
     return (
         <div>
             <div>
@@ -21,7 +29,7 @@ const WorkoutLogComp = ({ id, exerciseName, content, date, duration } : WorkoutL
                         src="/imgs/write_icon.svg"
                     />
                 </Link>
-                <button>
+                <button onClick={handleDelete}>
                     <img
                         alt="delete workout log buttom styling"
                         src="/imgs/del_icon.svg"
