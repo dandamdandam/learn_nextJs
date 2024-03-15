@@ -162,3 +162,16 @@ button{
 	cursor: pointer;
 	outline: inherit;
 }
+
+input, textarea{
+    background: var(--side-c);
+	color: inherit;
+	border: none;
+	padding: 5px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    resize: none;
+    color-scheme: dark;
+    border-radius: 5px;
+}
