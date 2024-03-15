@@ -6,12 +6,12 @@ import { useRouter } from "next/navigation";
 import { WorkoutLog, backURL } from "../globalVariable";
 import style from "../styles/workoutLog.module.css";
 
-const WorkoutLogComp = ({ id, exerciseName, content, date, duration } : WorkoutLog) => {
+const WorkoutLogComp = ({ id, exerciseName, content, date, duration, dataLoad }) => {
     const router = useRouter();
 
     const handleDelete = () => {
         fetch(backURL + `/api/workoutLog/${id}`, {method: 'DELETE'});
-        router.refresh();
+        dataLoad();
     }
 
     return (

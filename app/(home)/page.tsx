@@ -1,15 +1,23 @@
+'use client'
+
+import { useState, useEffect } from 'react';
+
 import Header from "../components/header";
 import WorkoutComp from "../components/workoutLog";
 import { WorkoutLog, backURL } from "../globalVariable";
 import style from "../styles/home.module.css";
 
-const getWorkoutLogs = async (): Promise<WorkoutLog[]> => {
-    const res = await (await fetch(backURL + "/api/workoutLog", {cache: 'no-store'})).json();
-    return res;
-}
+const MainPage = () => {
+    const [workoutLogs, setWorkoutLogs] = useState<WorkoutLog[]>([]);
+    const dataLoad = () => {
+        fetch(backURL + "/api/workoutLog")
+            .then(res => res.json())
+            .then(data => {setWorkoutLogs(data)});
+    }
 
-const MainPage = async () => {
-    const workoutLogs = await getWorkoutLogs();
+    useEffect(() => {
+        dataLoad();
+    }, []);
 
     return(
         <div>
@@ -24,6 +32,7 @@ const MainPage = async () => {
                             content={workoutLog.content}
                             date={new Date(workoutLog.date)}
                             duration={workoutLog.duration}
+                            dataLoad={dataLoad}
                         />
                     )
                 }
