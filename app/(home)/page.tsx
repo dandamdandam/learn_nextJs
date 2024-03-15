@@ -3,7 +3,7 @@ import WorkoutComp from "../components/workoutLog";
 import { WorkoutLog, backURL } from "../globalVariable";
 
 const getWorkoutLogs = async (): Promise<WorkoutLog[]> => {
-    const res = await (await fetch(backURL + "/api/workoutLog")).json();
+    const res = await (await fetch(backURL + "/api/workoutLog", {cache: 'no-store'})).json();
     return res;
 }
 

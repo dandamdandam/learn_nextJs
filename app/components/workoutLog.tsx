@@ -1,5 +1,6 @@
 'use client'
 
+import Link from "next/link";
 import { WorkoutLog } from "../globalVariable";
 
 const WorkoutLogComp = ({ id, exerciseName, content, date, duration } : WorkoutLog) => {
@@ -14,12 +15,12 @@ const WorkoutLogComp = ({ id, exerciseName, content, date, duration } : WorkoutL
                 <div>{getDateString(date)}</div>
             </div>
             <div>
-                <button>
+                <Link href={`/write?id=${id}&exerciseName=${exerciseName}&content=${content}&duration=${duration}`}>
                     <img
                         alt="go to write workout log buttom styling"
                         src="/imgs/write_icon.svg"
                     />
-                </button>
+                </Link>
                 <button>
                     <img
                         alt="delete workout log buttom styling"
