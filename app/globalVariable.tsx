@@ -1,3 +1,5 @@
+import { create } from 'zustand';
+
 export interface WorkoutLog{
     id: number,
     exerciseName: string,
@@ -6,4 +8,16 @@ export interface WorkoutLog{
     duration: string
 }
 
-export const backURL: string = "http://localhost:8080";
+interface ServerUrlStore {
+    backURL: string,
+    portNum : number,
+
+    setPortNum : (value: number) => void;
+}
+
+export const useServerUrlStore = create<ServerUrlStore>((set) => ({
+    backURL: "http://localhost:8080",
+    portNum: 8080,
+
+    setPortNum: (value) => set({portNum: value, backURL: "http://localhost:"+value}),
+}));

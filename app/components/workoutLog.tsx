@@ -3,14 +3,22 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import { WorkoutLog, backURL } from "../globalVariable";
+import { WorkoutLog, useServerUrlStore } from "../globalVariable";
 import style from "../styles/workoutLog.module.css";
 
 const WorkoutLogComp = ({ id, exerciseName, content, date, duration, dataLoad }) => {
     const router = useRouter();
+    const backURL = useServerUrlStore((state) => state.backURL);
 
     const handleDelete = () => {
-        fetch(backURL + `/api/workoutLog/${id}`, {method: 'DELETE'});
+        fetch(backURL + `/api/workoutLog/${id}`, {method: 'DELETE'})
+            .then(res => {
+                if(res.ok) return;
+                
+                alert("fail to delete data. check chrome devtools > network.");
+            }).catch(err => {
+                alert("fail to connect with server. execute server or check port number");
+            });
         dataLoad();
     }
 

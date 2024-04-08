@@ -4,7 +4,7 @@ import { FormEvent, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import Header from "../../components/header";
-import { backURL } from "../../globalVariable";
+import { useServerUrlStore } from "../../globalVariable";
 import style from "../../styles/write.module.css";
 
 // https://github.com/vercel/next.js/discussions/61654
@@ -21,6 +21,7 @@ const WritePage: React.FC = () => {
 const WriteComp = () => {
     const router = useRouter();
     const params = useSearchParams();
+    const backURL = useServerUrlStore((state) => state.backURL);
 
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -34,6 +35,12 @@ const WriteComp = () => {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(Object.fromEntries(formData)),
+        }).then(res => {
+            if(res.ok) return;
+            
+            alert("fail to post/update data. check chrome devtools > network.");
+        }).catch(err => {
+            alert("fail to connect with server. execute server or check port number");
         });
 
         router.push('/');
