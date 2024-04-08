@@ -1,0 +1,12 @@
+.setting{
+    padding: 10px;
+    border-bottom: solid 3px var(--side-c);
+}
+.setting div{
+    padding: 10px;
+}
+.setting button{
+    border-radius: 20px;
+    border: 3px solid var(--main-c);
+    padding: 5px 20px;
+}

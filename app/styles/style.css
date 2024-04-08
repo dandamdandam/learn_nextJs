@@ -163,7 +163,7 @@ button{
 	outline: inherit;
 }
 
-input, textarea{
+input, textarea, select{
     background: var(--side-c);
 	color: inherit;
 	border: none;

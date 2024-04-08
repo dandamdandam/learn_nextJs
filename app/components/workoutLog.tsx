@@ -1,13 +1,11 @@
 'use client'
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
-import { WorkoutLog, useServerUrlStore } from "../globalVariable";
+import { useServerUrlStore } from "../globalVariable";
 import style from "../styles/workoutLog.module.css";
 
-const WorkoutLogComp = ({ id, exerciseName, content, date, duration, dataLoad }) => {
-    const router = useRouter();
+const WorkoutLogComp = ({ id, exerciseName, content, date, duration, isDeleted, setIsDeleted}) => {
     const backURL = useServerUrlStore((state) => state.backURL);
 
     const handleDelete = () => {
@@ -19,7 +17,7 @@ const WorkoutLogComp = ({ id, exerciseName, content, date, duration, dataLoad })
             }).catch(err => {
                 alert("fail to connect with server. execute server or check port number");
             });
-        dataLoad();
+        setIsDeleted(isDeleted+1);
     }
 
     return (
