@@ -1,35 +1,33 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import Header from "../components/header";
 import Setting from '../components/Setting';
 import WorkoutComp from "../components/workoutLog";
 import { WorkoutLog, useServerUrlStore } from "../globalVariable";
 import style from "../styles/home.module.css";
+import { useQuery } from 'react-query';
 
 const WorkoutLogs = () => {
-    const [workoutLogs, setWorkoutLogs] = useState<WorkoutLog[]>([]);
-    const [isDeleted, setIsDeleted] = useState<number>(0);
     const backURL = useServerUrlStore((state) => state.backURL);
     const dataLoad = () => {
-        fetch(backURL + "/api/workoutLog")
+        return fetch(backURL + "/api/workoutLog")
             .then(res => {
                 if(res.ok) return res.json();
                 
-                alert("fail to get datas. check chrome devtools > network.");
+                alert("데이터를 가져오는데 실패했습니다. 개발자도구 > networks 탭에서 오류를 확인해주세요.");
                 return [];
             })
-            .then(data => {setWorkoutLogs(data)})
+            .then(data => data)
             .catch(() => {
-                alert("fail to connect with server. execute server or check port number");
+                alert("서버 연결에 실패했습니다. 서버를 실행시켰는지, 포트가 맞는지 확인해주세요.");
             })
     }
+    const {data: workoutLogs, isLoading} = useQuery(["workoutLogs"], dataLoad);
 
-    useEffect(() => {
-        dataLoad();
-    }, [backURL, isDeleted]);
-
+    if(isLoading) return <div>isLoading</div>;
+    
     return(
         <div className={style.workoutLogs}>
             {
@@ -41,8 +39,6 @@ const WorkoutLogs = () => {
                         content={workoutLog.content}
                         date={new Date(workoutLog.date)}
                         duration={workoutLog.duration}
-                        isDeleted={isDeleted}
-                        setIsDeleted={setIsDeleted}
                     />
                 )
             }
@@ -51,17 +47,15 @@ const WorkoutLogs = () => {
 }
 
 const WorkoutLogPages = () => {
-    const [workoutLogs, setWorkoutLogs] = useState<WorkoutLog[]>([]);
-    const [isDeleted, setIsDeleted] = useState<number>(0);
     const [pageNum, setPageNum] = useState<number>(0);
     const [maxPageNum, setmaxPageNum] = useState<number>(0);
     const backURL = useServerUrlStore((state) => state.backURL);
     const dataLoad = (howMany) => {
-        fetch(`${backURL}/api/workoutLog/page?howMany=${howMany}&pageNum=${pageNum}`)
+        return fetch(`${backURL}/api/workoutLog/page?howMany=${howMany}&pageNum=${pageNum}`)
             .then(res => {
                 if(res.ok)return res.json();
                 
-                alert("fail to get datas. check chrome devtools > network.");
+                alert("데이터를 가져오는데 실패했습니다. 개발자도구 > networks 탭에서 오류를 확인해주세요.");
                 return {
                     "maxPage": 0,
                     "workoutLogs": [],
@@ -69,27 +63,25 @@ const WorkoutLogPages = () => {
             })
             .then(data => {
                 setmaxPageNum(data.maxPage);
-                setWorkoutLogs(data.workoutLogs);
+                return data.workoutLogs;
             })
             .catch(() => {
-                alert("fail to connect with server. execute server or check port number");
+                alert("서버 연결에 실패했습니다. 서버를 실행시켰는지, 포트가 맞는지 확인해주세요.");
             })
     }
     const pageChange = (value: number) => {
         var pageTo = value + pageNum;
         if(0<=pageTo && pageTo<maxPageNum) setPageNum(pageTo);
     }
+    const {data: workoutLogs, isLoading} = useQuery(["workoutLogs"], dataLoad);
 
-    useEffect(() => {
-        dataLoad(0);
-        dataLoad(4);
-    }, [backURL, pageNum, isDeleted]);
+    if(isLoading) return <div>isLoading</div>;
 
     return(
         <div>
             <div className={style.workoutLogs}>
                 {
-                    workoutLogs.map(workoutLog => 
+                    workoutLogs?.map(workoutLog => 
                         <WorkoutComp
                             key={workoutLog.id}
                             id={workoutLog.id}
@@ -97,8 +89,6 @@ const WorkoutLogPages = () => {
                             content={workoutLog.content}
                             date={new Date(workoutLog.date)}
                             duration={workoutLog.duration}
-                            isDeleted={isDeleted}
-                            setIsDeleted={setIsDeleted}
                         />
                     )
                 }

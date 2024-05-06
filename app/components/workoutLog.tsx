@@ -4,20 +4,24 @@ import Link from "next/link";
 
 import { useServerUrlStore } from "../globalVariable";
 import style from "../styles/workoutLog.module.css";
+import { useQueryClient } from "react-query";
 
-const WorkoutLogComp = ({ id, exerciseName, content, date, duration, isDeleted, setIsDeleted}) => {
+const WorkoutLogComp = ({ id, exerciseName, content, date, duration}) => {
     const backURL = useServerUrlStore((state) => state.backURL);
+    const queryClient = useQueryClient();
 
     const handleDelete = () => {
         fetch(backURL + `/api/workoutLog/${id}`, {method: 'DELETE'})
             .then(res => {
-                if(res.ok) return;
+                if(res.ok){
+                    queryClient.invalidateQueries(["workoutLogs"]);
+                    return;
+                }
                 
                 alert("fail to delete data. check chrome devtools > network.");
             }).catch(err => {
                 alert("fail to connect with server. execute server or check port number");
             });
-        setIsDeleted(isDeleted+1);
     }
 
     return (

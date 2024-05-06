@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Header from "../../components/header";
 import { useServerUrlStore } from "../../globalVariable";
 import style from "../../styles/write.module.css";
+import { useQueryClient } from "react-query";
 
 // https://github.com/vercel/next.js/discussions/61654
 const WritePage: React.FC = () => {
@@ -22,6 +23,7 @@ const WriteComp = () => {
     const router = useRouter();
     const params = useSearchParams();
     const backURL = useServerUrlStore((state) => state.backURL);
+    const queryClient = useQueryClient();
 
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -36,7 +38,10 @@ const WriteComp = () => {
           },
           body: JSON.stringify(Object.fromEntries(formData)),
         }).then(res => {
-            if(res.ok) return;
+            if(res.ok){
+                queryClient.invalidateQueries(["workoutLogs"]);
+                return;
+            }
             
             alert("fail to post/update data. check chrome devtools > network.");
         }).catch(err => {

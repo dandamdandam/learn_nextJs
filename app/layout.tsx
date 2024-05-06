@@ -1,4 +1,5 @@
 import './styles/style.css';
+import UseQuery from './components/UseQuery';
 
 export const metadata = {
   title: 'My Workout Log',
@@ -12,7 +13,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <UseQuery>
+          {children}
+        </UseQuery>
+      </body>
     </html>
   )
 }
