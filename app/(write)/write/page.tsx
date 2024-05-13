@@ -43,9 +43,9 @@ const WriteComp = () => {
                 return;
             }
             
-            alert("fail to post/update data. check chrome devtools > network.");
+            alert("요청에 실패했습니다. 개발자도구 > networks 탭에서 오류를 확인해주세요.");
         }).catch(err => {
-            alert("fail to connect with server. execute server or check port number");
+            alert("서버 연결에 실패했습니다. 서버를 실행시켰는지, IP가 맞는지 확인해주세요.");
         });
 
         router.push('/');

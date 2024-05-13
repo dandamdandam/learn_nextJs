@@ -5,24 +5,33 @@ import { useServerUrlStore } from "../globalVariable";
 import style from "../styles/setting.module.css";
 
 const Setting = ({setIsPaging}) => {
-    const {portNum, setPortNum} = useServerUrlStore((state) => state)
+    const {portNum, setPortNum, ip, setIp} = useServerUrlStore((state) => state)
 
     function onSubmit(event: FormEvent<HTMLFormElement>){
         event.preventDefault();
      
         const formData = new FormData(event.currentTarget);
         
+        setIp(formData.get("ip").toString());
         setPortNum(Number(formData.get("portNum")));
 
         if(Number(formData.get("isPaging"))==0) setIsPaging(false);
         else setIsPaging(true);
+        alert("세팅 완료. 새로 고침하면 초기화 됩니다.");
     }
 
     return(
         <div>
             <form onSubmit={onSubmit} className={style.setting}>
-                {/* set server port */}
+                {/* set server url */}
                 <div>
+                    <label htmlFor="ip">서버 IP: </label>
+                    <input
+                        id="ip"
+                        name="ip"
+                        defaultValue={ip}
+                        type="text"
+                    />
                     <label htmlFor="portNum">서버 포트 번호: </label>
                     <input
                         id="portNum"

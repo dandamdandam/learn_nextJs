@@ -16,17 +16,16 @@ const WorkoutLogs = () => {
             .then(res => {
                 if(res.ok) return res.json();
                 
-                alert("데이터를 가져오는데 실패했습니다. 개발자도구 > networks 탭에서 오류를 확인해주세요.");
+                alert("요청에 실패했습니다. 개발자도구 > networks 탭에서 오류를 확인해주세요.");
                 return [];
             })
             .then(data => data)
-            .catch(() => {
-                alert("서버 연결에 실패했습니다. 서버를 실행시켰는지, 포트가 맞는지 확인해주세요.");
-            })
     }
-    const {data: workoutLogs, isLoading} = useQuery(["workoutLogs"], dataLoad);
+    const {data: workoutLogs, isLoading, isError}: {data: WorkoutLog[], isLoading: boolean, isError: boolean} 
+        = useQuery(["workoutLogs"], dataLoad);
 
     if(isLoading) return <div>isLoading</div>;
+    if(isError) return <div>서버 연결에 실패했습니다. 서버를 실행시켰는지, IP가 맞는지 확인해주세요.</div>;
     
     return(
         <div className={style.workoutLogs}>
@@ -73,9 +72,11 @@ const WorkoutLogPages = () => {
         var pageTo = value + pageNum;
         if(0<=pageTo && pageTo<maxPageNum) setPageNum(pageTo);
     }
-    const {data: workoutLogs, isLoading} = useQuery(["workoutLogs"], dataLoad);
+    const {data: workoutLogs, isLoading, isError}: {data: WorkoutLog[], isLoading: boolean, isError: boolean} 
+        = useQuery(["workoutLogs"], dataLoad);
 
     if(isLoading) return <div>isLoading</div>;
+    if(isError) return <div>서버 연결에 실패했습니다. 서버를 실행시켰는지, IP가 맞는지 확인해주세요.</div>;
 
     return(
         <div>
